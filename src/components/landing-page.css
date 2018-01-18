@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+header {
+    padding: 20px 10px;
+}
+  
+section {
+    padding: 20px 10px;
+    background-color: #bbb;
+    text-align: center;
+}
+
+section:nth-child(even) {
+    background-color: #ddd;
+}

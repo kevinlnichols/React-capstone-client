@@ -1,0 +1,43 @@
+div {
+    margin-bottom: 10px;
+}
+
+.create-question {
+    margin-top: 20px;
+}
+
+.button {
+    background: #CCC7C7;
+}
+
+.multiple-choice > input, label {
+    display: block;
+}
+
+.multiple-choice-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.radio {
+    border: 0.8px solid black;
+}
+
+.input-question {
+    margin-left: 25px;
+    width: 220px;
+}
+
+.true-false > input, label {
+    float: none;
+    display: inline-block;
+}
+
+.label-margin {
+    margin-right: 10px;
+}
+
+.question-type {
+    margin-bottom: 10px;
+}

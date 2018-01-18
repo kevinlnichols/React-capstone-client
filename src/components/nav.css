@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+nav {
+    position: fixed;
+    height: 10%;
+    padding: 1% 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: #aaa;
+}
+
+ul {
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+
+ nav ul li {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+}
+
+li {
+    margin-right: 15px;
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+}
+
