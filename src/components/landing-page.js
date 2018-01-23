@@ -16,24 +16,24 @@ export function LandingPage(props) {
     return (
         <main role="main" className="home">
             <Header />
-            <h1>Quiz Builder</h1>
+            <h1>Working Title: Find a Restaurant</h1>
             <section>
                 <header>
-                    <h3>Create and share tests</h3>
+                    <h3>Not sure where to eat?</h3>
                 </header>
-                <p>Create quizzes consisting of multiple choice and true or false questions. Share with others and take their quizzes by searching through a variety of categories.</p>
+                <p>Create groups with friends and coworkers. Everyone in the group votes on the category of food they want.</p>
             </section>
             <section>
                 <header>
-                    <h3>Help manage the integrity of the tests</h3>
+                    <h3>Choose from places nearby</h3>
                 </header>
-                <p>If you feel like an incorrect answer is given as a correct solution, then challenge it! Suggest the real answer, and if enough people vote for your revision then your edit will be accepted!</p>
+                <p>Based on the category chosen, everyone in the group votes on restuarants in that category. Afterward, everyone in the groups assigns a rating to the restuarant.</p>
             </section>
             <section>
                 <header>
-                    <h3>Track your progress</h3>
+                    <h3>Get directions</h3>
                 </header>
-                <p>Keep track of your scores, tests created, and revisions accepted. As more revisions are accepted you go up in rank!</p>
+                <p>This application uses Googles Directions API</p>
             </section>
             <section>
                 <header>

@@ -3,13 +3,11 @@ import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
 import LandingPage from './landing-page';
-import TestBuilder from './test-builder';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
-import TakeTest from './take-test-page';
-import Results from './results-page';
-
+import FindFriendsPage from './find-friends-page';
+import CreateGroupsPage from './create-groups-page';
 
 export class App extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -45,9 +43,8 @@ export class App extends React.Component {
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={RegistrationPage} />
-                <Route exact path="/createTest" component={TestBuilder} />
-                <Route exact path="/takeTest" component={TakeTest} />
-                <Route exact path="/results" component={Results} />
+                <Route exact path="/find-friends-page" component={FindFriendsPage} />
+                <Route exact path="/create-groups-page" component={CreateGroupsPage} />
             </div>
         );
     }

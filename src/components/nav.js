@@ -7,7 +7,6 @@ export default function Nav(props) {
         <nav>
             <ul>
                 <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/createTest">Create Test</a></li>
                 <li><a href="/">Logout</a></li>
             </ul>
         </nav>
