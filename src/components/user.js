@@ -5,6 +5,7 @@ import React from 'react';
 class User extends React.Component {
     constructor(props) {
         super(props);
+        // this.addFriend.bind(this);
         this.state = {
             currentUser: {
                 name: {
@@ -17,13 +18,15 @@ class User extends React.Component {
     }
 
     addFriend(newFriend) {
+        console.log(this.state.currentUser.friends);
         let newFriends = this.state.currentUser.friends.concat(newFriend);
+        console.log(this.state.currentUser.friends);
         this.setState({
             currentUser: {
                 friends: newFriends
             }
         })
-        console.log(this.state.currentUser.friends)
+        console.log(this.state.currentUser.friends);
     }
 
     render() {
@@ -32,7 +35,8 @@ class User extends React.Component {
         return (
             <div>
                 <li>{this.props.user.firstName} {this.props.user.lastName}</li>
-                <button onClick={this.addFriend.bind(this)}>Add</button>
+                {/* <button onClick={this.addFriend.bind(this)}>Add</button> */}
+                <button onClick={() => {this.addFriend}}>Add</button>
             </div>
         );
     }
