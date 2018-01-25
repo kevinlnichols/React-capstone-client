@@ -14,24 +14,17 @@ class SearchBar extends React.Component {
         };
     }
 
-    addUser(name) {
-        this.props.dispatch(addUser(name));
-    }
-
     updateSearch(event) {
         this.setState({search: event.target.value});
     }
    
     render() {
-        console.log(this.props.users);
         let filteredUsers = this.props.users.filter(
             (user) => {
-                console.log('Hello' + user.firstName);
                 return user.firstName.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
 
             }
         );
-        console.log(this.props.users);
         return (
             <div>
                 <input type="text"
@@ -39,8 +32,7 @@ class SearchBar extends React.Component {
                     onChange={this.updateSearch.bind(this)}/>
                 {this.state.search && <ul>
                     {filteredUsers.map((user) => {
-                        console.log(user);
-                        return <User user={user} key={user.id} onAdd={name => this.addUser(name)}/>
+                        return <User user={user} key={user.id}/>
                     })}
                 </ul>}
             </div>

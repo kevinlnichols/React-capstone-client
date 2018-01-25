@@ -1,4 +1,5 @@
 import * as actions from '../actions';
+import {Users} from '../mock-data/users';
 
 const initialState = {
     currentUser: {
@@ -10,16 +11,22 @@ const initialState = {
     }
 };
 
-export const reduxReducer = (state=initialState, action) => {
-    if (action.type === actions.ADD_USER) {
+
+
+export const friendsReducer = (state=initialState, action) => {
+    if (action.type === actions.ADD_FRIEND) {
+        const user = Users.filter(user => {
+            return user.id === action.userId;
+        }); console.log(user[0]);
         return Object.assign({}, state, {
-           friends: [...state.friends, {
-               name: {
-                   firstName: action.firstName,
-                   lastName: action.lastName
-               }
-           }] 
+            ...state,
+            currentUser: {
+                ...state.currentUser,
+                friends: [...state.currentUser.friends, user[0]] 
+            }
         });
+        console.log(state);
     }
+    
     return state;
 }

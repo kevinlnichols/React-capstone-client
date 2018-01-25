@@ -3,14 +3,15 @@ import {reducer as formReducer} from 'redux-form';
 import thunk from 'redux-thunk';
 import {loadAuthToken} from './local-storage';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
-import {reduxReducer} from './reducers';
+import {friendsReducer} from './reducers/index';
 
 const store = createStore(
     combineReducers({
-        form: formReducer
+        friendsReducer: friendsReducer
         //auth: authReducer,
         //protectedData: protectedDataReducer
     }),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk)
 );
 
