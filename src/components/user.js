@@ -17,7 +17,7 @@ class User extends React.Component {
         return (
             <div>
                 <li>{this.props.user.firstName} {this.props.user.lastName}</li>
-                <button onClick={() => {this.addFriend(2)}}>Add</button>
+                <button onClick={(userId) => {this.addFriend(userId)}}>Add</button>
             </div>
         );
     }
