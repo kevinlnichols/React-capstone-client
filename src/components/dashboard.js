@@ -5,6 +5,7 @@ import './dashboard.css';
 
 import Header from './header';
 import OptionsButton from './options-button';
+import ViewFriends from './view-friends';
 
 export class Dashboard extends React.Component {
     render() {
@@ -22,7 +23,9 @@ export class Dashboard extends React.Component {
                     </div>
                 </section>
                 <section>
-
+                    <div>
+                        <ViewFriends />
+                    </div>
                 </section>
             </main>
         );

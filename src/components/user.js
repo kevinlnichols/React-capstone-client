@@ -13,11 +13,12 @@ class User extends React.Component {
     }
 
     render() {
-        
+        console.log(this.props.user);
         return (
             <div>
                 <li>{this.props.user.firstName} {this.props.user.lastName}</li>
-                <button onClick={(userId) => {this.addFriend(userId)}}>Add</button>
+                {/* <button onClick={() => {this.addFriend(2)}}>Add</button> */}
+                <button onClick={() => {this.addFriend(this.props.user.id)}}>Add</button>
             </div>
         );
     }

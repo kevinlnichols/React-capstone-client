@@ -3,3 +3,5 @@ export const addFriend = userId => ({
     type: ADD_FRIEND,
     userId: userId
 });
+
+
