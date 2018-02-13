@@ -69,3 +69,52 @@ export let Users = [
         friends: [1, 2],
     }
 ]
+
+export let friends = 
+    [ {
+        id: 4,
+        name: {
+            firstName: 'John',
+            lastName: 'Nichols'
+        },
+        username: 'jonichols',
+        password: '1234567890',
+        ratings: [
+            {
+                restaurant: 'Tacos',
+                rating: 1,
+                category: 'Mexican'
+            },
+            {
+                restaurant: 'Twenty Tap',
+                rating: 1,
+                category: 'American Pub'
+            }
+        ],
+        groupId: [12345, 23456],
+        friends: [1, 2],
+    },
+    {
+        id: 5,
+        name: {
+            firstName: 'Jane',
+            lastName: 'Nichols'
+        },
+        username: 'janichols',
+        password: '1234567890',
+        ratings: [
+            {
+                restaurant: 'Tacos',
+                rating: 1,
+                category: 'Mexican'
+            },
+            {
+                restaurant: 'Twenty Tap',
+                rating: 1,
+                category: 'American Pub'
+            }
+        ],
+        groupId: [12345, 23456],
+        friends: [1, 2],
+    }]
+

@@ -6,8 +6,15 @@ import './dashboard.css';
 import Header from './header';
 import OptionsButton from './options-button';
 import ViewFriends from './view-friends';
+import {viewFriend} from '../actions/index.js';
 
 export class Dashboard extends React.Component {
+
+    componentDidMount() {
+        this.props.dispatch(viewFriend());
+    }
+
+
     render() {
         return (
             <main role="main">
@@ -24,7 +31,7 @@ export class Dashboard extends React.Component {
                 </section>
                 <section>
                     <div>
-                        <ViewFriends />
+                        <ViewFriends friends={this.props.friends}/>
                     </div>
                 </section>
             </main>
@@ -32,13 +39,14 @@ export class Dashboard extends React.Component {
     }
 }
 
-/*const mapStateToProps = state => {
-    const {currentUser} = state.auth;
+const mapStateToProps = state => {
+    //const {currentUser} = state.auth;
     return {
-        username: state.auth.currentUser.username,
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
-        protectedData: state.protectedData.data
+        // username: state.auth.currentUser.username,
+        // name: `${currentUser.firstName} ${currentUser.lastName}`,
+        // protectedData: state.protectedData.data,
+        friends: state.friendsReducer.friends
     };
-};*/
+};
 
-export default (Dashboard);
+export default connect(mapStateToProps)(Dashboard);

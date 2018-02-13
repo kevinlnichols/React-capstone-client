@@ -5,16 +5,6 @@ import {loadAuthToken} from './local-storage';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 import {friendsReducer} from './reducers/index';
 
-const defaultState = { 
-    currentUser: {
-        name: {
-            firstName: 'Ralph',
-            lastName: 'Nichols'
-        },
-        friends: []
-    }   
-}
-
 const store = createStore(
     combineReducers({
         friendsReducer: friendsReducer
@@ -23,9 +13,7 @@ const store = createStore(
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk),
-    defaultState
 );
-
 const authToken = loadAuthToken();
 if (authToken) {
     const token = authToken;
