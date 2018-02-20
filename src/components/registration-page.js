@@ -12,15 +12,15 @@ export function RegistrationPage(props) {
     }
     return (
         <div className="register-home">
-            <h2>Register for Quiz Builder</h2>
+            <h2>Register</h2>
             <RegistrationForm />
             <Link to="/">Login</Link>
         </div>
     );
 }
 
-/*const mapStateToProps = state => ({
+const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
-});*/
+});
 
-export default (RegistrationPage);
+export default connect(mapStateToProps)(RegistrationPage);

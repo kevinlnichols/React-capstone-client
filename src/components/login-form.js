@@ -1,16 +1,12 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 
 import './login-form.css';
 
 import Input from './input';
-import {login} from '../actions/auth';
-import {required, nonEmpty} from '../validators';
+import { login } from '../actions/auth';
+import { required, nonEmpty } from '../validators';
 
-const inputStyle = {
-    border: '1 px solid black',
-    height: 100
-}
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -40,7 +36,6 @@ export class LoginForm extends React.Component {
                     name="username"
                     id="username"
                     validate={[required, nonEmpty]}
-                    style={inputStyle}
                 />
                 <label htmlFor="password">Password</label>
                 <Field

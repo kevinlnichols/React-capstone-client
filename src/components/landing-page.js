@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 
 import './landing-page.css';
 import '../index.css';
@@ -40,14 +40,14 @@ export function LandingPage(props) {
                     <h3>Get Started</h3>
                 </header>
                 <LoginForm />
-                <Link to="/register" style={{textDecoration: 'none'}}><p className="link">Register</p></Link>
+                <Link to="/register" style={{ textDecoration: 'none' }}><p className="link">Register</p></Link>
             </section>
         </main>
     );
 }
 
-/*const mapStateToProps = state => ({
+const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
-});*/
+});
 
-export default (LandingPage);
+export default connect(mapStateToProps)(LandingPage);

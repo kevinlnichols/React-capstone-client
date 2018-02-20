@@ -50,9 +50,9 @@ export class App extends React.Component {
     }
 }
 
-/*const mapStateToProps = state => ({
+const mapStateToProps = state => ({
     hasAuthToken: state.auth.authToken !== null,
     loggedIn: state.auth.currentUser !== null
-});*/
+});
 
-export default (App);
+export default withRouter(connect(mapStateToProps)(App));
