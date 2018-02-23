@@ -13,6 +13,10 @@ const initialState = {
     error: null
 };
 
+if (localStorage.currentUser) {
+    initialState.currentUser = JSON.parse(localStorage.currentUser);
+}
+
 export function authReducer(state = initialState, action) {
     if (action.type === SET_AUTH_TOKEN) {
         return Object.assign({}, state, {
@@ -29,6 +33,7 @@ export function authReducer(state = initialState, action) {
             error: null
         });
     } else if (action.type === AUTH_SUCCESS) {
+        localStorage.currentUser = JSON.stringify(action.currentUser);
         return Object.assign({}, state, {
             loading: false,
             currentUser: action.currentUser

@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-h1 {
+.landing-h1 {
     text-align: center;
 }
 
@@ -10,12 +10,34 @@ header {
     padding: 20px 10px;
 }
   
-section {
+.first {
     padding: 20px 10px;
     background-color: #bbb;
     text-align: center;
 }
 
-section:nth-child(even) {
+.second:nth-child(even) {
     background-color: #ddd;
+}
+
+.section1 {
+    display: inline-block;
+}
+
+.food {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.home-text1, .home-text3 {
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+.home-text2 {
+    margin-left: 20px;
+    vertical-align: middle;
 }

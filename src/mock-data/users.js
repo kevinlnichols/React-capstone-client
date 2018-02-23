@@ -1,10 +1,8 @@
 export let Users = [
     {
         id: 1,
-        name: {
-            firstName: 'Kevin',
-            lastName: 'Nichols'
-        },
+        firstName: 'Kevin',
+        lastName: 'Nichols',
         username: 'knichols',
         password: '1234567890',
         ratings: [
@@ -23,11 +21,9 @@ export let Users = [
         friends: [2, 3],
     },
     {
-        id: 2,
-        name: {
-            firstName: 'Julie',
-            lastName: 'Nichols'
-        },
+        id: 2, firstName: 'Julie',
+        lastName: 'Nichols',
+
         username: 'jnichols',
         password: '1234567890',
         ratings: [
@@ -47,10 +43,10 @@ export let Users = [
     },
     {
         id: 3,
-        name: {
-            firstName: 'Finn',
-            lastName: 'Nichols'
-        },
+
+        firstName: 'Finn',
+        lastName: 'Nichols',
+
         username: 'fnichols',
         password: '1234567890',
         ratings: [
@@ -70,8 +66,8 @@ export let Users = [
     }
 ]
 
-export let friends = 
-    [ {
+export let friends =
+    [{
         id: 4,
         name: {
             firstName: 'John',

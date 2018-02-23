@@ -6,42 +6,15 @@ import './find-friends-page.css';
 
 import Header from './header';
 import SearchBar from './search-bar';
-
-let users = [
-    {
-        id: 1,
-        firstName: 'Kevin',
-        lastName: 'Nichols'
-    },
-    {
-        id: 2,
-        firstName: 'Julie',
-        lastName: 'Nichols'
-    },
-    {
-        id: 3,
-        firstName: 'Finn',
-        lastName: 'Nichols'
-    },
-    {
-        id: 4,
-        firstName: 'Milo',
-        lastName: 'Nichols'
-    },
-    {
-        id: 5,
-        firstName: 'Maple',
-        lastName: 'Nichols'
-    },
-]
+import { fetchProtectedData } from '../actions/protected-data';
+import requiresLogin from './requires-login';
 
 export function FindFriendsPage(props) {
-    console.log(users);
     return (
         <main role="main" className="find-friends-page">
             <Header />
             <div className="find-users-input">
-                <SearchBar users={users} />
+                <SearchBar />
             </div>
         </main>
     );

@@ -1,15 +1,9 @@
 import * as actions from '../actions';
 import { Users, friends } from '../mock-data/users';
+import * as userActions from '../actions/users';
 
 const initialState = {
-    currentUser: {
-        name: {
-            firstName: 'Ralph',
-            lastName: 'Nichols'
-        },
-    },
-    username: 'rnichols',
-    password: '1234567890',
+    users: [],
     ratings: [
         {
             restaurant: 'Tacos',
@@ -36,6 +30,11 @@ const initialState = {
 
 
 export const friendsReducer = (state = initialState, action) => {
+    if (action.type === userActions.GET_USERS) {
+        return Object.assign({}, state, {
+            users: action.users
+        })
+    }
     if (action.type === actions.ADD_FRIEND) {
         const user = Users.filter(user => {
             return user.id === action.userId;

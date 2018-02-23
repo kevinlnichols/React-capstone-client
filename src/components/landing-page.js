@@ -15,30 +15,40 @@ export function LandingPage(props) {
 
     return (
         <main role="main" className="home">
-            <Header />
-            <h1>Working Title: Find a Restaurant</h1>
-            <section>
-                <header>
+            <section className="title first">
+                <h1 className="landing-h1">Working Title: Find a Restaurant</h1>
+            </section>
+            <section className="second">
+                <div className="section1 home-text1">
                     <h3>Not sure where to eat?</h3>
-                </header>
-                <p>Create groups with friends and coworkers. Everyone in the group votes on the category of food they want.</p>
+                    <p>Create groups with friends and coworkers.<br/> Everyone in the group votes on the category of food they want.</p>
+                </div>
+                <div className="section1">
+                    <img className="food" src="https://farm5.staticflickr.com/4667/39698565214_a4d86fae83_o.jpg" alt="Picture of dessert" />
+                </div>
             </section>
-            <section>
-                <header>
+            <section className="first">
+                <div className="section1">
+                    <img className="food" src="https://farm5.staticflickr.com/4632/38598197860_c37e845d5c_o.jpg" alt="Burger" />
+                </div>
+                <div className="section1 home-text2">
                     <h3>Choose from places nearby</h3>
-                </header>
-                <p>Based on the category chosen, everyone in the group votes on restuarants in that category. Afterward, everyone in the groups assigns a rating to the restuarant.</p>
+                    <p>Based on the category chosen, everyone in the group votes on restuarants in that category. <br/> Afterward, everyone in the groups assigns a rating to the restuarant.</p>
+                </div>
             </section>
-            <section>
-                <header>
+            <section className="second">
+                <div className="section1 home-text3">
                     <h3>Get directions</h3>
-                </header>
-                <p>This application uses Googles Directions API</p>
+                    <p>This application uses Googles Directions API</p>
+                </div>
+                <div className="section1">
+                    <img className="food" src="https://farm5.staticflickr.com/4755/38598198140_065039fdf2_o.jpg"  alt="Tacos" />
+                </div>
             </section>
-            <section>
-                <header>
-                    <h3>Get Started</h3>
-                </header>
+            <section className="second">
+
+                <h3>Get Started</h3>
+
                 <LoginForm />
                 <Link to="/register" style={{ textDecoration: 'none' }}><p className="link">Register</p></Link>
             </section>

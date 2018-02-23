@@ -12,7 +12,6 @@ export class ViewFriends extends React.Component {
         console.log(this.props.friends);
         return (
             <ul>
-               <p>hello</p>
                {this.props.friends.map((friend, index) => <li key={index}>{friend.name.firstName}</li>)}
             </ul>
         );
