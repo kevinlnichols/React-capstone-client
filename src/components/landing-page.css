@@ -2,8 +2,32 @@
     box-sizing: border-box;
 }
 
+.title {
+    height: 100vh;
+    box-shadow: 0 4px 2px -2px;
+}
+
+.title-div {
+    height: 90%;
+    display: table;
+    width: 100%
+}
+
+.landing-section {
+    text-align: center;
+}
+
+.landing-paragraph {
+    font-size: 16px;
+}
+
 .landing-h1 {
     text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 90px;
+    color: rgb(239, 242, 247);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 header {
@@ -12,12 +36,12 @@ header {
   
 .first {
     padding: 20px 10px;
-    background-color: #bbb;
+    background-color: ghostwhite;
     text-align: center;
 }
 
-.second:nth-child(even) {
-    background-color: #ddd;
+.second {
+    background-color: ghostwhite;
 }
 
 .section1 {
@@ -26,18 +50,32 @@ header {
 
 .food {
     border-radius: 50%;
-    height: 200px;
-    width: 200px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    height: 300px;
+    width: 300px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 2px 2px 2px;
 }
 
 .home-text1, .home-text3 {
-    margin-right: 20px;
+    margin-right: 40px;
     vertical-align: middle;
 }
 
 .home-text2 {
-    margin-left: 20px;
+    margin-left: 40px;
     vertical-align: middle;
+}
+
+.login-section {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.login-section > h2 {
+    margin-bottom: 30px;
+}
+
+.pre-login {
+    box-shadow: 0 4px 2px -2px gray;
 }

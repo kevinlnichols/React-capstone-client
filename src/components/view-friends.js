@@ -12,7 +12,7 @@ export class ViewFriends extends React.Component {
         console.log(this.props.friends);
         return (
             <ul>
-               {this.props.friends.map((friend, index) => <li key={index}>{friend.name.firstName}</li>)}
+               {this.props.friends.map((friend, index) => <li key={index}>{friend.fullName}</li>)}
             </ul>
         );
     }

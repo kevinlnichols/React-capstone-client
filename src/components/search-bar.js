@@ -36,12 +36,14 @@ class SearchBar extends React.Component {
         );
         return (
             <div>
-                <input type="text"
+                <input 
+                    type="text"
+                    className="find-friend"
                     value={this.state.search}
                     onChange={this.updateSearch.bind(this)}/>
                 {this.state.search && <ul>
                     {filteredUsers.map((user) => {
-                        return <User user={user} key={user.id}/>
+                        return <User className="user-view-container" user={user} key={user.id}/>
                     })}
                 </ul>}
             </div>

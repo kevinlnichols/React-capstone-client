@@ -6,7 +6,7 @@ import './dashboard.css';
 import Header from './header';
 import OptionsButton from './options-button';
 import ViewFriends from './view-friends';
-import { viewFriend } from '../actions/index.js';
+import { viewFriend } from '../actions/users.js';
 import { fetchProtectedData } from '../actions/protected-data';
 import requiresLogin from './requires-login';
 
@@ -43,6 +43,7 @@ export class Dashboard extends React.Component {
                     <div className="column right">
                         <h5>Friends</h5>
                         <div>
+                        {console.log(this.props.friends)}
                             <ViewFriends friends={this.props.friends} />
                         </div>
                     </div>
@@ -57,7 +58,7 @@ const mapStateToProps = state => {
     return {
         fullName: `${currentUser.firstName} ${currentUser.lastName}`,
         protectedData: state.protectedData.data,
-        friends: state.friendsReducer.friends,
+        friends: state.auth.currentUser.friends,
         username: state.auth.currentUser.username
     };
 };

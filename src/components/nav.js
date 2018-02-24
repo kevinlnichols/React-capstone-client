@@ -4,10 +4,10 @@ import './nav.css';
 
 export default function Nav(props) {
     return (
-        <nav>
-            <ul>
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/">Logout</a></li>
+        <nav className="main-nav">
+            <ul className="nav-ul">
+                <li className="nav-li"><a href="/dashboard">Dashboard</a></li>
+                <li className="nav-li"><a href="/">Logout</a></li>
             </ul>
         </nav>
     );

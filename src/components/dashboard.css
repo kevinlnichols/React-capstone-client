@@ -9,23 +9,32 @@
     float: left;
     padding: 10px;
     height: 100vh;
+    box-shadow: 1px 0 2px;
+}
+
+.left {
+    box-shadow: 1px 0 1px;
 }
 
 .left, .right {
     width: 25%;
-    background:rgb(255, 255, 255);
+    background: ghostwhite;
 }
   
 .middle {
     width: 50%;
-    background:rgb(237, 237, 238);
+    background:snow;
 }   
 
 .group-box {
     width:85%;
     height: 50px;
-    background:rgb(255, 255, 255);
-    margin: 5px;
+    background:ghostwhite;
+    margin: 10px;
+    box-shadow: 0.5px 0.5px 0.5px;
+    border: 0.8px solid gray;
+    border-radius: 5px;
+    padding: 15px;
 }
 
 .group-box:hover {

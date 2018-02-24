@@ -1,15 +1,13 @@
 import React from 'react';
-import { addFriend } from '../actions';
 import { connect } from 'react-redux';
 import { fetchProtectedData } from '../actions/protected-data';
 import requiresLogin from './requires-login';
-import { getUser } from '../actions/users';
+import { getUser, addFriend } from '../actions/users';
 import './user.css';
 
 class User extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     componentDidMount() {
@@ -26,10 +24,10 @@ class User extends React.Component {
         return (
             <div className="add-friend-container">
                 <div className="fullName-box">
-                    <li>{this.props.user.fullName}</li>
+                    <li className="fullName-li">{this.props.user.fullName}</li>
                 </div>
-                <div className="add-friend">
-                    <button onClick={() => { this.addFriend(this.props.user.id) }}>Add</button>
+                <div className="add-a-friend">
+                    <button className="add-a-friend-button" onClick={() => { this.addFriend(this.props.user._id)}}>Add</button>
                 </div>
             </div>
         );

@@ -4,7 +4,8 @@ import {Link, Redirect} from 'react-router-dom';
 
 import Header from './header';
 import CreateGroup from './create-group';
-import {viewFriend, addFriendToGroup} from '../actions/index.js';
+//import {viewFriend, addFriendToGroup} from '../actions/index.js';
+import {viewFriend} from '../actions/users.js';
 
 export class CreateGroupsPage extends React.Component {
 
@@ -13,7 +14,7 @@ export class CreateGroupsPage extends React.Component {
     }
 
     addFriendToGroup(userId) {
-        this.props.dispatch(addFriendToGroup(userId));
+       // this.props.dispatch(addFriendToGroup(userId));
     }
 
     render() { 

@@ -35,7 +35,7 @@ export const friendsReducer = (state = initialState, action) => {
             users: action.users
         })
     }
-    if (action.type === actions.ADD_FRIEND) {
+    if (action.type === userActions.ADD_FRIEND) {
         const user = Users.filter(user => {
             return user.id === action.userId;
         }); console.log(user[0]);
@@ -48,7 +48,7 @@ export const friendsReducer = (state = initialState, action) => {
         });
         console.log(state);
     }
-    if (action.type === actions.VIEW_FRIENDS) {
+    if (action.type === userActions.VIEW_FRIENDS) {
         return Object.assign({}, state, {
             friends: friends
         })

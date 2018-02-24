@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-nav {
+.main-nav {
     position: fixed;
     height: 10%;
     padding: 1% 0;
@@ -10,22 +10,23 @@ nav {
     left: 0;
     right: 0;
     z-index: 10;
-    background-color: #aaa;
+    background-color: lightseagreen;
+    box-shadow: 0.6px 0.6px 0.6px;
 }
 
-ul {
+.nav-ul {
     margin: auto;
     text-align: center;
     margin-top: 10px;
 }
 
- nav ul li {
+ .main-nav ul li {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 0.8em;
+  font-size: 2em;
 }
 
-li {
+.nav-li {
     margin-right: 15px;
     display: inline;
 }
