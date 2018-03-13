@@ -1,4 +1,10 @@
-.input-field {
-    border: 1px solid black;
-    height: 100px;
+.login-button {
+    color: antiquewhite;
+    border: 0.5px outset gray;
+    background-color: rgb(192, 56, 22);
+    padding: 10px;
+}
+
+.login-button:hover {
+    box-shadow: 2px 2px 2px, rgb(15, 15, 15);
 }

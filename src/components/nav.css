@@ -10,7 +10,7 @@
     left: 0;
     right: 0;
     z-index: 10;
-    background-color: lightseagreen;
+    background-color: rgb(192, 56, 22);
     box-shadow: 0.6px 0.6px 0.6px;
 }
 
@@ -23,7 +23,7 @@
  .main-nav ul li {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 30px;
 }
 
 .nav-li {
@@ -33,5 +33,25 @@
 
 a {
     text-decoration: none;
+    color: antiquewhite;
 }
 
+.nav-li > button {
+    border: none;
+    background-color: rgb(192, 56, 22);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 30px;
+    color: antiquewhite;
+    padding-bottom: 4px;
+}
+
+.nav-li > button:hover {
+    font-size: 33px;
+}
+
+.nav-li > a:hover {
+    text-decoration: none;
+    font-size: 33px;
+    color: antiquewhite; 
+}

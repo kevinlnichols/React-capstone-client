@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "hover.css": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "passport-local": "^1.0.0",
     "react": "^16.2.0",

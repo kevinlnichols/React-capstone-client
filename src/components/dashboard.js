@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './dashboard.css';
 
 import Header from './header';
-import OptionsButton from './options-button';
 import ViewFriends from './view-friends';
-import { viewFriend } from '../actions/users.js';
+import { viewFriend, viewGroup } from '../actions/users.js';
 import { fetchProtectedData } from '../actions/protected-data';
 import requiresLogin from './requires-login';
 
@@ -15,6 +15,7 @@ export class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
         this.props.dispatch(viewFriend());
+        this.props.dispatch(viewGroup());
     }
 
 
@@ -24,26 +25,30 @@ export class Dashboard extends React.Component {
                 <Header />
                 <section className="row">
                     <div className="column left">
-                        <header>
+                        <header className="dashboard-header">
                             <h3>Hello {this.props.fullName}</h3>
                         </header>
-                        <div>
-                            <OptionsButton />
-                        </div>
                     </div>
                     <div className="column middle">
-                        <h5>Groups</h5>
-                        <div className="group-box">
-                            <p>Hello</p>
+                        <div className="top-row">
+                            <h5>Groups</h5>
                         </div>
-                        <div className="group-box">
-                            <p>Hello this is a group with a much longer title.</p>
+                        <div className="find-create-buttons top-row">
+                            <Link className="create-group" to="/create-groups-page" friends={this.props.friends}>Create Group</Link>
                         </div>
+                        <ul>
+                            {console.log(this.props.groups)}
+                            {this.props.groups.map((group, index) => <Link to={'/vote-page/' + group._id}><li className="group-box" key={index}>{group.groupName}</li></Link>)}
+                        </ul>
                     </div>
                     <div className="column right">
-                        <h5>Friends</h5>
+                        <div className="top-row">
+                            <h5>Friends</h5>
+                        </div>
+                        <div className="find-create-buttons top-row">
+                            <Link className="find-friends" to="/find-friends-page" >Add Friends</Link>
+                        </div>
                         <div>
-                        {console.log(this.props.friends)}
                             <ViewFriends friends={this.props.friends} />
                         </div>
                     </div>
@@ -54,12 +59,14 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const {currentUser} = state.auth;
+    console.log(state.friendsReducer.friends);
+    const { currentUser } = state.auth;
     return {
         fullName: `${currentUser.firstName} ${currentUser.lastName}`,
         protectedData: state.protectedData.data,
-        friends: state.auth.currentUser.friends,
-        username: state.auth.currentUser.username
+        friends: state.friendsReducer.friends,
+        username: state.auth.currentUser.username,
+        groups: currentUser.groups
     };
 };
 

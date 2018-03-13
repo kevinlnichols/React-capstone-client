@@ -4,7 +4,6 @@ import {Link, Redirect} from 'react-router-dom';
 
 import Header from './header';
 import CreateGroup from './create-group';
-//import {viewFriend, addFriendToGroup} from '../actions/index.js';
 import {viewFriend} from '../actions/users.js';
 
 export class CreateGroupsPage extends React.Component {
@@ -21,7 +20,7 @@ export class CreateGroupsPage extends React.Component {
         return (
             <main role="main" className="create-groups-page">
                 <Header />
-                <section className="create-group">
+                <section className="create-new-group">
                     <CreateGroup friends={this.props.friends} />
                 </section>
             </main>

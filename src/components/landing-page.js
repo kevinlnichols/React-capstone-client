@@ -8,6 +8,7 @@ import '../index.css';
 import LoginForm from './login-form';
 import Header from './header';
 import TitleImage from './photos/title.jpeg';
+import RedArrow from './photos/down-arrow.png';
 
 var sectionStyle = {
     backgroundImage: `url(${TitleImage})`,
@@ -15,8 +16,15 @@ var sectionStyle = {
     overflow: 'hidden'
   };
 
+var registerStyle = {
+    color: 'black',
+    textDecoration: 'none',
+    fontweight: 'bold'
+}
+
 export function LandingPage(props) {
     if (props.loggedIn) {
+        
         return <Redirect to='/dashboard' />;
     }
 
@@ -27,8 +35,11 @@ export function LandingPage(props) {
                 <div className="title-div">
                     <h1 className="landing-h1">Find a Restaurant</h1>
                 </div>
+                <div className="red-arrow">
+                    <a href="#landing-section"><img className="hvr-grow" src={RedArrow} /></a>
+                </div>
             </section>
-            <section className="landing-section second">
+            <section id="landing-section" className="landing-section second">
                 <div className="section1 home-text1">
                     <h2>Not sure where to eat?</h2>
                     <p className="landing-paragraph">Create groups with friends and coworkers.<br /> Everyone in the group votes on the category of food they want.</p>
@@ -59,7 +70,7 @@ export function LandingPage(props) {
                 <div className="login-section">
                     <h2>Get Started</h2>
                     <LoginForm />
-                    <Link to="/register" style={{ textDecoration: 'none' }}><p className="link">Register</p></Link>
+                    <Link to="/register" style={registerStyle}><p className="link">Register</p></Link>
                 </div>
             </section>
         </main>

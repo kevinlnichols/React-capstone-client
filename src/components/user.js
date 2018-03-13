@@ -15,7 +15,7 @@ class User extends React.Component {
         this.props.dispatch(getUser());
     }
 
-    addFriend(userId) {
+    addFriend(userId, userFullName) {
         this.props.dispatch(addFriend(userId));
     }
 
@@ -27,7 +27,7 @@ class User extends React.Component {
                     <li className="fullName-li">{this.props.user.fullName}</li>
                 </div>
                 <div className="add-a-friend">
-                    <button className="add-a-friend-button" onClick={() => { this.addFriend(this.props.user._id)}}>Add</button>
+                    <button className="add-a-friend-button hvr-box-shadow-outset" onClick={() => { this.addFriend(this.props.user._id)}}>Add</button>
                 </div>
             </div>
         );

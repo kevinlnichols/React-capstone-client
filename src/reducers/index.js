@@ -1,4 +1,3 @@
-import * as actions from '../actions';
 import { Users, friends } from '../mock-data/users';
 import * as userActions from '../actions/users';
 
@@ -12,20 +11,12 @@ const initialState = {
         }
     ],
     groupId: null,
-    group: [
-        {
-            groupName: 'blah',
-            groupId: 1,
-            members: [{
-                id: 4,
-                name: {
-                    firstName: 'John',
-                    lastName: 'Nichols'
-                }
-            }]
-        },
-    ],
-    friends: []
+    groupData: null,
+    group: [],
+    friends: [],
+    categories: [],
+    allCategories: ['Barbecue', 'Buffet', 'Cafe', 'Cafeteria', 'Coffeehouse', 'Pub', 'Teppanyaki', 'Chinese',
+        'Indian', 'Italian', 'Japanese', 'Soul', 'Thai', 'Mexican', 'Ethiopian', 'Mediterranean']
 };
 
 
@@ -49,41 +40,51 @@ export const friendsReducer = (state = initialState, action) => {
         console.log(state);
     }
     if (action.type === userActions.VIEW_FRIENDS) {
+        console.log(action.friends);
         return Object.assign({}, state, {
-            friends: friends
+            friends: action.friends
         })
     }
-    if (action.type === actions.ADD_FRIEND_TO_GROUP) {
+    if (action.type === userActions.ADD_FRIEND_TO_GROUP) {
+        console.log(state);
         const group = state.group.find(g => {
-            return g.groupId === action.groupId;
+            return g.groupId === state.groupId;
         });
-        const member = group.members.find(g => {
-            return g.id === action.userId;
-        });
+        let member;
         let members;
-        if (member) {
-            members = group.members.filter(m => {
-                return m.id !== action.userId;
+
+        if (group) {
+            member = group.members.find(g => {
+                return g.id === action.userId;
             });
-        } else {
-            members = group.members.concat(action.userId);
-        };
-        group.members = members;
+            if (member) {
+                members = group.members.filter(m => {
+                    return m.id !== action.userId;
+                });
+            } else {
+                let friend = state.friends.find(friend => {
+                    return  friend._id === action.userId;
+                })
+                members = group.members.concat({id: action.userId, firstName: friend.firstName, lastName: friend.lastName });
+            };
+            group.members = members;
+        }
+
         return Object.assign({}, state, {
-            group: [...state.group ]
+            group: [...state.group]
         });
     }
-    if (action.type === actions.CREATE_GROUP) {
+    if (action.type === userActions.CREATE_GROUP) {
         return Object.assign({}, state, {
-            groupId: 10,
+            groupId: null,
             group: state.group.concat({
                 groupName: '',
-                groupId: 10,
+                groupId: null,
                 members: []
             })
         });
     }
-    if (action.type === actions.DELETE_FRIEND_FROM_GROUP) {
+    if (action.type === userActions.DELETE_FRIEND_FROM_GROUP) {
         const group = state.group.find(g => {
             return g.groupId === action.groupId;
         });
@@ -98,7 +99,34 @@ export const friendsReducer = (state = initialState, action) => {
         }
         group.members = members;
         return Object.assign({}, state, {
-            group: [...state.group ]
+            group: [...state.group]
+        });
+    }
+    if (action.type === userActions.VIEW_GROUPS) {
+        return Object.assign({}, state, {
+            groups: action.groups
+        })
+    }
+    if(action.type === userActions.VIEW_CURRENT_GROUP_NAME) {
+        console.log(action.groupName);
+        return Object.assign({}, state, {
+            groupName: action.groupName
+        })
+    }
+    if (action.type === userActions.ADD_CHOICE_FOR_VOTE) {
+        return Object.assign({}, state, {
+            categories: state.categories.concat(action.choiceId)
+        });
+    }
+    if (action.type === userActions.REMOVE_CHOICE_FOR_VOTE) {
+        return Object.assign({}, state, {
+            categories: state.categories.filter(category => {
+                if (category === action.choiceId) {
+                    return false;
+                } else {
+                    return true;
+                }
+            })
         });
     }
 

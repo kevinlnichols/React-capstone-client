@@ -7,6 +7,9 @@ import Input from './input';
 import { login } from '../actions/auth';
 import { required, nonEmpty } from '../validators';
 
+var inputStyle = {
+    padding: '15px'
+  };
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -30,6 +33,7 @@ export class LoginForm extends React.Component {
                 {error}
                 <label htmlFor="username">Username</label>
                 <Field
+                    style={inputStyle}
                     className="input-field"
                     component={Input}
                     type="text"
@@ -46,7 +50,7 @@ export class LoginForm extends React.Component {
                     id="password"
                     validate={[required, nonEmpty]}
                 />
-                <button disabled={this.props.pristine || this.props.submitting}>
+                <button className="login-button" disabled={this.props.pristine || this.props.submitting}>
                     Log In
                 </button>
             </form>

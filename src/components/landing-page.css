@@ -4,7 +4,7 @@
 
 .title {
     height: 100vh;
-    box-shadow: 0 4px 2px -2px;
+    border: 0.5px outset gray;
 }
 
 .title-div {
@@ -28,6 +28,11 @@
     font-size: 90px;
     color: rgb(239, 242, 247);
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.red-arrow {
+    text-align: center;
+    margin-top: -145px;
 }
 
 header {
@@ -79,3 +84,70 @@ header {
 .pre-login {
     box-shadow: 0 4px 2px -2px gray;
 }
+
+@media screen and (max-width: 450px) {
+    .landing-h1 {
+        font-size: 55px;
+    }
+
+    .landing-paragraph {
+        font-size: 14px;
+    }
+
+    .home-text1 {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .food {
+        height: 250px;
+        width: 250px;
+    }
+
+    .section1 {
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .landing-h1 {
+        font-size: 125px;
+    }
+
+    .landing-paragraph {
+        font-size: 25px;
+        margin: 30px;
+    }
+
+    .home-text1 {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .food {
+        height: 325px;
+        width: 325x;
+    }
+
+    .section1 {
+        margin: auto;
+    }
+}
+
+/* Grow */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  

@@ -1,0 +1,98 @@
+.vote-page {
+    box-sizing: border-box;
+    background-color: #ffff;
+}
+
+.vote-page-title {
+    text-align: center;
+    margin-top: 35px;
+    color: #000000;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.vote-section {
+    border: 1px solid rgb(24, 23, 23);
+    border-radius: 5px;
+    background-color: rgba(56, 51, 51, 0.219);
+}
+
+.vote-section {
+    max-width: 1000px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+.vote-section::before, .vote-section::after {
+    display: table;
+    content: '';
+}
+
+.vote-section::after {
+    clear: both;
+}
+
+.user-choices {
+    border: 1px solid rgb(24, 23, 23);
+    border-radius: 5px;
+    background-color: rgba(189, 13, 13, 0.219);
+}
+
+.user-choices {
+    max-width: 1000px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.choice {
+    float: left;
+    padding-left: 1.04166666%;
+    padding-right: 1.04166666%;
+    width: 45%;
+}
+
+.choice-button {
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: linen;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 7px;
+    width: 100%;
+    background-image: url('./photos/cutlery.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    padding-right: 30px;
+}
+
+.choice-button-2 {
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: linen;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 7px;
+    width: 100%;
+    background-image: url('./photos/food.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    padding-right: 30px;
+}
+
+.choice-button:hover {
+    box-shadow: 2px 2px 2px;
+}
+
+.choice-button-2:hover {
+    box-shadow: 2px 2px 2px;
+}
+
+@media only screen and (min-width: 440px) {
+    .choice {
+      width: 25%;
+    }
+}

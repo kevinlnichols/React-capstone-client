@@ -5,9 +5,16 @@
     width: 100vh;
 }
 
+.dashboard-header {
+    margin-left: 20px;
+    text-transform: capitalize;
+}
+
 .column {
     float: left;
-    padding: 10px;
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 100vh;
     box-shadow: 1px 0 2px;
 }
@@ -35,8 +42,97 @@
     border: 0.8px solid gray;
     border-radius: 5px;
     padding: 15px;
+    list-style: none;
+    color: black;
+    text-transform: uppercase;
 }
 
 .group-box:hover {
     box-shadow: 2px 2px 2px;
+    text-decoration: none;
 }
+
+.top-row {
+    display: inline-block;
+}
+
+.create-group, .find-friends {
+    color: black;
+    border: 0.5px solid black;
+    padding: 8px;
+    border-radius: 10px;
+} 
+
+.create-group:hover, .find-friends:hover {
+    text-decoration: none;
+    box-shadow: 2px 2px 2px;
+    font-weight: bold;
+    color: black;
+}
+
+.find-create-buttons {
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 710px) {
+    .middle {
+        background:black;
+    }  
+}
+
+@media screen and (max-width: 500px) {
+    .column {
+        float: none;
+        height: 500px;
+        padding-top: 30px;
+        text-align: center;
+    }
+
+    .left {
+        height: 200px;
+    }
+
+    .group-box {
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    .middle {
+        width: 100%;
+    }   
+}
+
+
+
+@media screen and (min-width: 1500px) {
+    .row {
+        margin-top: 60px;
+    }
+
+    .group-box {
+        height: 70px;
+    }
+
+    .group-box > p {
+        font-size: 22px;
+    }
+
+    .top-row > h5 {
+        font-size: 22px;
+    }
+
+    .dashboard-header > h3 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .column {
+        padding-top: 25px;
+    }
+}
+

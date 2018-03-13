@@ -8,6 +8,7 @@ import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 import FindFriendsPage from './find-friends-page';
 import CreateGroupsPage from './create-groups-page';
+import VotePage from './vote-page';
 
 export class App extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -45,6 +46,7 @@ export class App extends React.Component {
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/find-friends-page" component={FindFriendsPage} />
                 <Route exact path="/create-groups-page" component={CreateGroupsPage} />
+                <Route exact path="/vote-page/:id" component={VotePage} />
             </div>
         );
     }
