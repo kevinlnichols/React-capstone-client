@@ -66,6 +66,36 @@ export const viewCurrentGroupName = groupName => ({
     groupName
 });
 
+export const DELETE_GROUP = 'DELETE_GROUP';
+export const deleteGroup = groupId => ({
+    type: DELETE_GROUP,
+    groupId
+});
+
+export const DELETE_FRIEND = 'DELETE_FRIEND';
+export const deleteFriend = userId => ({
+    type: DELETE_FRIEND,
+    userId
+});
+
+export const GROUP_INFO = 'GROUP_INFO';
+export const groupInformation = (group) => ({
+    type: GROUP_INFO,
+    group
+});
+
+// export const RATING_INFO = 'RATING_INFO';
+// export const ratingInformation = rating => ({
+//     type: RATING_INFO,
+//     rating
+// });
+
+export const SAVED_VOTES = 'SAVED_VOTES';
+export const savedVotes = categories => ({
+    type: SAVED_VOTES,
+    categories
+});
+
 export const registerUser = user => dispatch => {
     return fetch(`${API_BASE_URL}/users`, {
         method: 'POST',
@@ -217,9 +247,58 @@ export const viewGroup = view => dispatch => {
         });
 };
 
-export const groupVoteInfo = info => dispatch => {
-    console.log(info);
-    return fetch(`${API_BASE_URL}/users/group/vote`, {
+export const deletingGroup = groupId => dispatch => {
+    return fetch(`${API_BASE_URL}/users/group/${groupId}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `Bearer ${localStorage.authToken}`
+        },
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(res => {
+            dispatch(deleteGroup(res))
+        })
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
+
+export const deletingFriend = userId => dispatch => {
+    return fetch(`${API_BASE_URL}/users/friends/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `Bearer ${localStorage.authToken}`
+        },
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(res => {
+            dispatch(deleteFriend(res))
+        })
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
+
+export const groupInfo = () => dispatch => {
+    return fetch(`${API_BASE_URL}/users/group`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -229,7 +308,58 @@ export const groupVoteInfo = info => dispatch => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(res => {
-            dispatch(viewCurrentGroupName(res))
+            dispatch(groupInformation(res))
+        })
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
+
+// export const ratingInfo = () => dispatch => {
+//     return fetch(`${API_BASE_URL}/users/rating`, {
+//         method: 'GET',
+//         headers: {
+//             'content-type': 'application/json',
+//             'authorization': `Bearer ${localStorage.authToken}`
+//         },
+//     })
+//         .then(res => normalizeResponseErrors(res))
+//         .then(res => res.json())
+//         .then(res => {
+//             dispatch(ratingInformation(res))
+//         })
+//         .catch(err => {
+//             const {reason, message, location} = err;
+//             if (reason === 'ValidationError') {
+//                 return Promise.reject(
+//                     new SubmissionError({
+//                         [location]: message
+//                     })
+//                 );
+//             }
+//         });
+// };
+
+export const saveVoting = (categories, groupId) => dispatch => {
+    return fetch(`${API_BASE_URL}/users/vote/${groupId}`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `Bearer ${localStorage.authToken}`
+        },
+        body: JSON.stringify(categories)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(res => {
+            dispatch(savedVotes(res))
         })
         .catch(err => {
             const {reason, message, location} = err;

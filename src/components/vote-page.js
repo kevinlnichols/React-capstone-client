@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 
 import './vote-page.css';
 
 import Header from './header';
-import { groupVoteInfo, addChoiceForVote, removeChoiceForVote } from '../actions/users';
+import BackButton from './back-button';
+import { addChoiceForVote, removeChoiceForVote, saveVoting, groupInfo } from '../actions/users';
 
 
 let buttonStyle = {
@@ -17,14 +20,30 @@ let buttonStyle2 = {
     margin: '5px'
 }
 
+const style = {
+    width: '90%',
+    margin: 20,
+    padding: 20,
+    textAlign: 'center',
+    display: 'inline-block',
+    backgroundColor: 'antiquewhite'
+};
+
+const style2 = {
+    color: 'antiquewhite',
+    margin: '15px'
+};
+
 export class VotePage extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
-    componentDidMount() {
-        this.props.dispatch(groupVoteInfo());
+    
+
+    savedVotes() {
+        this.props.dispatch(saveVoting(this.props.categories, this.props.match.params.id));
+        this.props.dispatch(groupInfo());
     }
 
     addChoiceForVote(choiceId, groupId) {
@@ -37,24 +56,28 @@ export class VotePage extends React.Component {
     }
 
     render() {
-        
-        const currentGroup = this.props.groups.map(group => {
-            if (group._id === this.props.match.params.id) {
+        let currentGroup;
+        if (this.props.groups) {
+            currentGroup = this.props.groups.map(group => {
+                if (group._id === this.props.match.params.id) {
+                    return (
+                        <div className="vote-page-title">
+                            <h4>{group.groupName}</h4>
+                        </div>
+                    )
+                }
+            })
+        }
+
+        console.log(this.props.groups);
+        let categories;
+        if (this.props.categories) {
+            categories = this.props.categories.map((category) => {
                 return (
-                    <div className="vote-page-title">
-                        <h4>{group.groupName}</h4>
-                    </div>
+                    <input value={category} onClick={() => this.removeChoiceForVote(category, this.props.match.params.id)} style={buttonStyle2} className="choice-button-2" type="button" value={category} />
                 )
-            }
-        })
-
-
-        console.log(this.props);
-        const categories = this.props.categories.map((category) => {
-            return (
-                <input value={category} onClick={() => this.removeChoiceForVote(category, this.props.match.params.id)} style={buttonStyle2} className="choice-button-2" type="button" value={category} />
-            )
-        })
+            })
+        }
         const allCategories = this.props.allCategories.map((category) => {
             const found = this.props.categories.find(myCategory => {
                 return myCategory == category;
@@ -76,14 +99,23 @@ export class VotePage extends React.Component {
                     {currentGroup}
                 </section>
                 <section className="vote-section">
-                    <div className="choices-section">
+                    <Paper style={style} zDepth={2} >
                         {allCategories}
-                    </div>
+                    </Paper>
+                    {/* <div className="choices-section">
+                        {allCategories}
+                    </div> */}
                 </section>
                 <section>
                     <div id="user-choices" className="user-choices">
-                        {categories}
-                        <input type="submit" value="Vote" />
+                        <Paper style={style} zDepth={2} >
+                            {categories}
+                            {/* <input onClick={() => this.savedVotes()} type="button" value="Vote" /> */}
+                            <RaisedButton
+                                onClick={() => this.savedVotes()}
+                                style={style2}
+                                label="Vote" />
+                        </Paper>
                     </div>
                 </section>
             </main>
@@ -93,7 +125,7 @@ export class VotePage extends React.Component {
 
 
 const mapStateToProps = state => {
-    console.log(state);
+
     return {
         friends: state.friendsReducer.friends,
         groups: state.auth.currentUser.groups,

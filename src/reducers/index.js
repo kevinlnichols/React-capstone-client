@@ -3,13 +3,7 @@ import * as userActions from '../actions/users';
 
 const initialState = {
     users: [],
-    ratings: [
-        {
-            restaurant: 'Tacos',
-            rating: 9,
-            category: 'Mexican'
-        }
-    ],
+    ratings: [],
     groupId: null,
     groupData: null,
     group: [],
@@ -127,6 +121,31 @@ export const friendsReducer = (state = initialState, action) => {
                     return true;
                 }
             })
+        });
+    }
+    if (action.type === userActions.GROUP_INFO) {
+        return Object.assign({}, state, {
+           groupData: action.group
+        });
+    }
+    // if (action.type === userActions.RATING_INFO) {
+    //     return Object.assign({}, state, {
+    //        ratingData: action.ratings
+    //     });
+    // }
+    if (action.type === userActions.SAVED_VOTES) {
+        return Object.assign({}, state, {
+           categories: action.categories
+        });
+    }
+    if (action.type === userActions.DELETE_GROUP) {
+        return Object.assign({}, state, {
+           group: state.group.filter(g => g.id !== action.g.id)
+        });
+    }
+    if (action.type === userActions.DELETE_FRIEND) {
+        return Object.assign({}, state, {
+           friends: state.friends.filter(friend => friend.id !== action.friend.id)
         });
     }
 

@@ -1,3 +1,7 @@
+.friend-li {
+    list-style: none;
+}
+
 .friend-box {
     width:85%;
     height: 50px;
@@ -7,6 +11,11 @@
     border: 0.8px solid gray;
     border-radius: 5px;
     padding: 15px;
-    list-style: none;
     text-transform: capitalize;
 }
+
+.friend-box:hover {
+    box-shadow: 2px 2px 2px;
+    font-weight: bold;
+}
+

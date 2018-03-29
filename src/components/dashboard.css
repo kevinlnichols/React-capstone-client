@@ -47,9 +47,18 @@
     text-transform: uppercase;
 }
 
+.voted {
+    border: 2.5px solid rgb(8, 230, 45);  
+}
+
+.needs-to-vote {
+    border: 2.5px solid rgb(230, 8, 8);  
+}
+
 .group-box:hover {
-    box-shadow: 2px 2px 2px;
     text-decoration: none;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px;
 }
 
 .top-row {
@@ -74,10 +83,10 @@
     margin-left: 20px;
 }
 
-@media screen and (max-width: 710px) {
-    .middle {
-        background:black;
-    }  
+@media screen and (max-width: 850px) {
+    .group-box {
+        height: 100px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -107,6 +116,32 @@
     }   
 }
 
+@media screen and (max-width: 500px) {
+    .column {
+        float: none;
+        height: 500px;
+        padding-top: 30px;
+        text-align: center;
+    }
+
+    .left {
+        height: 200px;
+    }
+
+    .group-box {
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    .middle {
+        width: 100%;
+    }   
+}
 
 
 @media screen and (min-width: 1500px) {

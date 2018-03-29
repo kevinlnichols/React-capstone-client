@@ -1,0 +1,51 @@
+
+.title-section-container {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.title-section-group-page {
+    width: 60%;
+    float: left;
+}
+.vote-button-section {
+    width: 30%;
+    float: left;
+    margin-top: 40px;
+}
+
+.group-page-title > h4 {
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+
+.member-section {
+    text-align: center;
+    clear: both;
+}
+
+.member-card-container {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+    width: 25%;
+}
+
+.member-card {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+}
+
+@media screen and (max-width: 500) {
+    .member-card-container {
+        width: 90%;
+        display: block;
+    }
+    .member-card {
+        width: 90%;
+        display: block
+    }
+}

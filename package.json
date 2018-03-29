@@ -5,11 +5,16 @@
   "dependencies": {
     "hover.css": "^2.2.1",
     "jwt-decode": "^2.2.0",
+    "material-ui": "^0.20.0",
     "passport-local": "^1.0.0",
     "react": "^16.2.0",
+    "react-confirm-alert": "^2.0.2",
     "react-dom": "^16.2.0",
     "react-fontawesome": "^1.6.1",
+    "react-navigation": "^1.5.8",
+    "utils": "*",
     "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
@@ -22,5 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-preset-stage-1": "^6.24.1"
   }
 }

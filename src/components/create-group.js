@@ -1,6 +1,7 @@
 import React from 'react';
 import { addFriendToGroup, saveGroups, createGroup, deleteFriendFromGroup } from '../actions/users.js';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import './create-group.css';
 
@@ -17,13 +18,8 @@ class CreateGroup extends React.Component {
         this.props.dispatch(createGroup());
         this.state = {
             isCreatingGroup: false,
-            groupValue: ''
+            redirect: false
         }
-    }
-
-
-    groupNamePresent(e) {
-        this.setState({groupValue: e.target.value})
     }
 
     startCreatingGroup() {
@@ -33,13 +29,18 @@ class CreateGroup extends React.Component {
     }
 
     addFriendToGroup(userId, groupId) {
-        console.log(userId, groupId);
         this.props.dispatch(addFriendToGroup(userId, groupId));
     }
 
     createGroups() {
         this.props.dispatch(saveGroups({ groupName: this.groupName.value, members: this.group.members }));
-        console.log(this.group.members);
+        this.setState({redirect: true})
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='../dashboard' />;
+        }
     }
 
     deleteFriendFromGroup(userId, groupId) {
@@ -48,8 +49,6 @@ class CreateGroup extends React.Component {
 
     render() {
         let members = [];
-
-        console.log(this.props);
         if (this.props.group) {
             this.group = this.props.group.find(g => g.groupId === this.props.groupId);
             if (this.group) {
@@ -69,9 +68,12 @@ class CreateGroup extends React.Component {
         }
 
         const addFriends = this.props.friends.map((friend, index) => {
-            const found = this.group.members.find(member => {
-                return member.id == friend._id;
-            })
+            let found;
+            if (this.group) {
+                found = this.group.members.find(member => {
+                    return member.id == friend._id;
+                })
+            }
             if (found) {
                 return;
             }
@@ -79,7 +81,7 @@ class CreateGroup extends React.Component {
                 <div className="friend-container">
                     <div className="friend-card add-friend-div">
                         <input
-                            onClick={() => {this.addFriendToGroup(friend._id); this.startCreatingGroup()}}
+                            onClick={() => { this.addFriendToGroup(friend._id); this.startCreatingGroup() }}
                             className="add-friend hvr-grow"
                             type="button"
                             id="add-to-group-button"
@@ -90,33 +92,27 @@ class CreateGroup extends React.Component {
 
         return (
             <div className="friend-section">
+                {this.renderRedirect()}
                 <div className="choose-friends">
                     <ul className="friend-list">
                         {addFriends}
                     </ul>
                 </div>
-                {this.state.isCreatingGroup === true && 
-                    (<div className="selected-friends" >
-                        <div className="group-name-container">
-                            <label>Group Name: </label>
-                            <input 
-                                className="input-style" 
-                                style={inputStyle}
-                                value={this.state.groupValue} 
-                                onChange={this.groupNamePresent}
-                                type="text" 
-                                ref={(input) => this.groupName = input} />
-                        </div>
-                        <div className="col-container">{members}</div>
-                        <input 
-                            className="create-group-button hvr-grow" 
-                            disabled={!this.state.groupValue}
-                            onClick={() => this.createGroups()} 
-                            ref="submitGroup"
-                            type="button" 
-                            value="Create Group" />
-                    </div>)}
-
+                <form onSubmit={() => this.createGroups()} >
+                    {this.state.isCreatingGroup === true &&
+                        (<div className="selected-friends" >
+                            <div className="group-name-container">
+                                <label>Group Name: </label>
+                                <input
+                                    className="input-style"
+                                    style={inputStyle}
+                                    type="text"
+                                    ref={(input) => this.groupName = input} required />
+                            </div>
+                            <div className="col-container">{members}</div>
+                            <button className="create-group-button hvr-grow">Create Group</button>
+                        </div>)}
+                </form>
             </div>
         );
 

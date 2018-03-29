@@ -1,0 +1,29 @@
+.back-button {
+    border: none;
+    background-color: rgb(192, 56, 22);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 30px;
+    color: antiquewhite;
+    margin-right: 9px;
+}
+
+.back-button:hover {
+    font-size: 33px;
+}
+
+@media screen and (max-width: 500px) {
+    .back-button-icon {
+        text-transform: capitalize;
+        background-color: white;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 20px;
+        margin: auto;
+    }
+
+    .back-button-icon:hover {
+        font-size: 20px;
+        text-decoration: underline;
+    }
+}

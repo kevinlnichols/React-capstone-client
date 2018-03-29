@@ -9,6 +9,7 @@ import ViewFriends from './view-friends';
 import { viewFriend, viewGroup } from '../actions/users.js';
 import { fetchProtectedData } from '../actions/protected-data';
 import requiresLogin from './requires-login';
+import { groupInfo } from '../actions/users';
 
 export class Dashboard extends React.Component {
 
@@ -16,12 +17,30 @@ export class Dashboard extends React.Component {
         this.props.dispatch(fetchProtectedData());
         this.props.dispatch(viewFriend());
         this.props.dispatch(viewGroup());
+        this.props.dispatch(groupInfo());
+        
     }
 
 
+    voted(group) {
+        const found = group.votes.find(votes => {
+            return votes.memberId === this.props.userId;
+        })
+        if (found) {
+            return 'voted';
+        } else {
+            return 'needs-to-vote';
+        }
+        console.log(group);
+    }
+
     render() {
+       // console.log(group);
+        console.log(this.props.userId);
+        
+
         return (
-            <main role="">
+            <main role="main">
                 <Header />
                 <section className="row">
                     <div className="column left">
@@ -36,10 +55,14 @@ export class Dashboard extends React.Component {
                         <div className="find-create-buttons top-row">
                             <Link className="create-group" to="/create-groups-page" friends={this.props.friends}>Create Group</Link>
                         </div>
-                        <ul>
-                            {console.log(this.props.groups)}
-                            {this.props.groups.map((group, index) => <Link to={'/vote-page/' + group._id}><li className="group-box" key={index}>{group.groupName}</li></Link>)}
-                        </ul>
+                        <div>
+                            {this.props.groupData ?
+                                this.props.groupData.map((group, index) =>
+                                    <Link to={'/group-page/' + group._id}>
+                                        <p className={'group-box ' + this.voted(group)} key={index}>{group.groupName}</p>
+                                    </Link>) : ''
+                            }
+                        </div>
                     </div>
                     <div className="column right">
                         <div className="top-row">
@@ -66,7 +89,9 @@ const mapStateToProps = state => {
         protectedData: state.protectedData.data,
         friends: state.friendsReducer.friends,
         username: state.auth.currentUser.username,
-        groups: currentUser.groups
+        groups: state.auth.currentUser.groups,
+        groupData: state.friendsReducer.groupData,
+        userId: state.auth.currentUser._id
     };
 };
 

@@ -1,13 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, withRouter, BrowserRouter } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
-import {refreshAuthToken} from '../actions/auth';
+import { refreshAuthToken } from '../actions/auth';
 import FindFriendsPage from './find-friends-page';
 import CreateGroupsPage from './create-groups-page';
+import GroupPage from './group-page';
 import VotePage from './vote-page';
 
 export class App extends React.Component {
@@ -26,8 +28,8 @@ export class App extends React.Component {
 
     startPeriodicRefresh() {
         this.refreshInterval = setInterval(
-          () => this.props.dispatch(refreshAuthToken()),
-          60 * 60 * 1000 
+            () => this.props.dispatch(refreshAuthToken()),
+            60 * 60 * 1000
         );
     }
 
@@ -40,14 +42,19 @@ export class App extends React.Component {
 
     render() {
         return (
-            <div className="app">
-                <Route exact path="/" component={LandingPage} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/register" component={RegistrationPage} />
-                <Route exact path="/find-friends-page" component={FindFriendsPage} />
-                <Route exact path="/create-groups-page" component={CreateGroupsPage} />
-                <Route exact path="/vote-page/:id" component={VotePage} />
-            </div>
+            <BrowserRouter>
+                <MuiThemeProvider>
+                    <div className="app">
+                        <Route exact path="/" component={LandingPage} />
+                        <Route exact path="/dashboard" component={Dashboard} />
+                        <Route exact path="/register" component={RegistrationPage} />
+                        <Route exact path="/find-friends-page" component={FindFriendsPage} />
+                        <Route exact path="/create-groups-page" component={CreateGroupsPage} />
+                        <Route exact path="/group-page/:id" component={GroupPage} />
+                        <Route exact path="/vote-page/:id" component={VotePage} />
+                    </div>
+                </MuiThemeProvider>
+            </ BrowserRouter>
         );
     }
 }
