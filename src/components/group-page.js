@@ -8,12 +8,14 @@ import Toggle from 'material-ui/Toggle';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
+
 import './group-page.css';
 
 import Header from './header';
 import GroupResults from './group-results';
+//import MapContainer from './map-component';
 import { groupVoteInfo, groupInfo, deletingGroup } from '../actions/users';
-
+//#region 
 const style = {
     width: '90%',
     margin: 20,
@@ -33,11 +35,14 @@ export class GroupPage extends React.Component {
         super(props);
         this.state = {
             expanded: false,
-            redirect: false
-        }
+            redirect: false,
 
+        }
     }
 
+
+
+    //#region 
     deleteGroup() {
         console.log(this.props.match.params.id);
         this.props.dispatch(deletingGroup(this.props.match.params.id));
@@ -87,9 +92,7 @@ export class GroupPage extends React.Component {
     };
 
 
-
     render() {
-        console.log(this.props.groupData);
 
         let currentGroup;
         if (this.props.groupData) {
@@ -115,22 +118,17 @@ export class GroupPage extends React.Component {
         let voteInfo;
         if (group) {
             voteInfo = group.votes;
-            //.find(groupId => {
-            //     if (group._id === groupId.groupId) {
-            //         return true;
-            //     }
-            // })
         }
         console.log(voteInfo);
         let members;
         if (group && group.members && voteInfo) {
             members = group.members.map(member => {
                 let categories = (<p>Has not voted yet</p>);
-                    voteInfo.forEach(vote => {
+                voteInfo.forEach(vote => {
                     console.log(vote.memberId);
                     if (member._id === vote.memberId) {
                         categories = (<p>{vote.categories.join(', ')}</p>)
-                    } 
+                    }
                 });
                 console.log(categories);
                 return (
@@ -150,7 +148,6 @@ export class GroupPage extends React.Component {
                 )
             })
         }
-        
         return (
             <main role="main" className="group-page">
                 <Header />
@@ -164,21 +161,22 @@ export class GroupPage extends React.Component {
                             <RaisedButton style={style2} label="Vote" />
                         </Link>
                     </div>
+                    <div className="delete-section" >
+                        <RaisedButton
+                            onClick={this.delete}
+                            style={style2}
+                            label="Delete Group" />
+                    </div>
                 </section>
                 <section className="member-section" >
                     <Paper style={style} zDepth={2} >
                         {members}
                     </Paper>
                 </section>
-                <section className="member-section" >
-                    <RaisedButton
-                        onClick={this.delete}
-                        style={style2}
-                        label="Delete Group" />
-                </section>
                 <section className="results-section" >
                     <GroupResults groupId={this.props.match.params.id} />
                 </section>
+
             </main>
         );
     };

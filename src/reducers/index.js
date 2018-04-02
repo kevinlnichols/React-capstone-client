@@ -23,7 +23,7 @@ export const friendsReducer = (state = initialState, action) => {
     if (action.type === userActions.ADD_FRIEND) {
         const user = Users.filter(user => {
             return user.id === action.userId;
-        }); console.log(user[0]);
+        }); 
         return Object.assign({}, state, {
             ...state,
             currentUser: {
@@ -31,16 +31,13 @@ export const friendsReducer = (state = initialState, action) => {
                 friends: [...state.currentUser.friends, user[0]]
             }
         });
-        console.log(state);
     }
     if (action.type === userActions.VIEW_FRIENDS) {
-        console.log(action.friends);
         return Object.assign({}, state, {
             friends: action.friends
         })
     }
     if (action.type === userActions.ADD_FRIEND_TO_GROUP) {
-        console.log(state);
         const group = state.group.find(g => {
             return g.groupId === state.groupId;
         });
@@ -102,7 +99,6 @@ export const friendsReducer = (state = initialState, action) => {
         })
     }
     if(action.type === userActions.VIEW_CURRENT_GROUP_NAME) {
-        console.log(action.groupName);
         return Object.assign({}, state, {
             groupName: action.groupName
         })

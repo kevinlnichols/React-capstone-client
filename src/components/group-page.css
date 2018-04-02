@@ -5,14 +5,16 @@
     width: 100%;
 }
 
-.title-section-group-page {
-    width: 60%;
-    float: left;
-}
 .vote-button-section {
     width: 30%;
-    float: left;
-    margin-top: 40px;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.delete-section {
+    width: 30%;
+    margin-top: 30px;
+    display: inline-block;
 }
 
 .group-page-title > h4 {

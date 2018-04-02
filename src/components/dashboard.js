@@ -31,12 +31,9 @@ export class Dashboard extends React.Component {
         } else {
             return 'needs-to-vote';
         }
-        console.log(group);
     }
 
     render() {
-       // console.log(group);
-        console.log(this.props.userId);
         
 
         return (
@@ -82,7 +79,6 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.friendsReducer.friends);
     const { currentUser } = state.auth;
     return {
         fullName: `${currentUser.firstName} ${currentUser.lastName}`,

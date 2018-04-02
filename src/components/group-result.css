@@ -1,0 +1,12 @@
+.result-section {
+    text-align: center;
+}
+
+.top-choice {
+    font-size: 22px;
+}
+
+#map {
+    border: 1px solid black;
+    margin-bottom: 30px;
+}

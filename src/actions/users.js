@@ -222,7 +222,6 @@ export const saveGroups = (group) => dispatch => {
 };
 
 export const viewGroup = view => dispatch => {
-    console.log(view);
     return fetch(`${API_BASE_URL}/users/groups/view`, {
         method: 'GET',
         headers: {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { addFriend, deletingFriend } from '../actions/users.js';
+import { deletingFriend } from '../actions/users.js';
 import { connect } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import './view-friends.css';
@@ -39,9 +39,6 @@ export class ViewFriends extends React.Component {
       };
 
       deleteFriend(friendId) {
-        console.log(friendId);
-        console.log(deletingFriend);
-        console.log(this.props);
         this.props.dispatch(deletingFriend(friendId));
         this.setState({redirect: true})
     }
@@ -54,7 +51,6 @@ export class ViewFriends extends React.Component {
             })
         }
 
-        console.log(friend);
         return (
             <ul>
                 {this.props.friends.map((friend, index) =>
