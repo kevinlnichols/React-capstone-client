@@ -55,7 +55,7 @@ export function LandingPage(props) {
                 <div className="section1 home-text2">
                     <h2>Choose from places nearby</h2>
                     <p className="landing-paragraph">Based on the category chosen, nearby <br />
-                     restuarants will be shown on a map powered by Googles Places API.</p>
+                     restaurants will be shown on a map powered by Googles Places API.</p>
                 </div>
             </section>
             <section className="landing-section">

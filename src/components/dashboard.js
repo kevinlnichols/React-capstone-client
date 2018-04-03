@@ -54,6 +54,7 @@ export class Dashboard extends React.Component {
                                 </span> button to create a group with specific friends.
                                 Once a group is created it will appear on this Dashboard,
                                 where you can select the group and initiate the voting process.
+                                You can delete friends by selecting a name from your friends' list.
                             </p>
                         </div>
                     </div>
@@ -78,7 +79,7 @@ export class Dashboard extends React.Component {
                             <h5>Friends</h5>
                         </div>
                         <div className="find-create-buttons top-row">
-                            <Link className="find-friends" to="/find-friends-page" >Add Friends</Link>
+                            <Link friends={this.props.friends} className="find-friends" to="/find-friends-page" >Add Friends</Link>
                         </div>
                         <div>
                             <ViewFriends friends={this.props.friends} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
+import { Redirect } from 'react-router-dom';
 
 import './vote-page.css';
 
@@ -36,13 +37,9 @@ const style2 = {
 export class VotePage extends React.Component {
     constructor(props) {
         super(props);
-    }
-
-
-
-    savedVotes() {
-        this.props.dispatch(saveVoting(this.props.categories, this.props.match.params.id));
-        this.props.dispatch(groupInfo());
+        this.state = {
+            redirect: false
+        }
     }
 
     addChoiceForVote(choiceId, groupId) {
@@ -51,6 +48,18 @@ export class VotePage extends React.Component {
 
     removeChoiceForVote(choiceId, groupId) {
         this.props.dispatch(removeChoiceForVote(choiceId, groupId));
+    }
+
+    savedVotes() {
+        this.props.dispatch(saveVoting(this.props.categories, this.props.match.params.id));
+        this.props.dispatch(groupInfo());
+        this.setState({redirect: true})
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to={`../group-page/${this.props.match.params.id}`} />;
+        }
     }
 
     render() {
@@ -99,6 +108,7 @@ export class VotePage extends React.Component {
         return (
             <main role="main" className="vote-page">
                 <Header />
+                {this.renderRedirect()}
                 <section className="title-section" >
                     {currentGroup}
                 </section>

@@ -44,7 +44,7 @@ export class ViewFriends extends React.Component {
     }
 
     render() {
-
+        
         return (
             <ul>
                 {this.props.friends.map((friend, index) =>

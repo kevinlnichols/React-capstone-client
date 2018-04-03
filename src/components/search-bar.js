@@ -12,8 +12,8 @@ var inputStyle = {
 };
 
 class SearchBar extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             search: ''
         };
@@ -38,7 +38,7 @@ class SearchBar extends React.Component {
                 }
             );
             filteredUsers = filteredUsers.map((user, index) => {
-                return <User key={index} className="user-view-container" user={user} />
+                return <User friends={this.props.friends} key={index} className="user-view-container" user={user} />
             })
         }
         return (
