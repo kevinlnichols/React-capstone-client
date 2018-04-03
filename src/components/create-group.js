@@ -50,14 +50,14 @@ class CreateGroup extends React.Component {
     render() {
         let members = [];
         if (this.props.group) {
-            this.group = this.props.group.find(g => g.groupId === this.props.groupId);
+            this.group = this.props.group.find((g, index) => g.groupId === this.props.groupId);
             if (this.group) {
                 for (let i = 0; i < this.group.members.length; i++) {
                     let member = this.group.members[i];
                     members.push(
-                        <div className="friend-container chosen">
-                            {/* <li className="friend">{member.firstName} {member.lastName}</li> */}
+                        <div key={i} className="friend-container chosen">
                             <input
+                                key={i}
                                 className="delete-friends hvr-grow"
                                 onClick={() => this.deleteFriendFromGroup(member.id, this.props.groupId)}
                                 type="button"
@@ -78,9 +78,10 @@ class CreateGroup extends React.Component {
                 return;
             }
             return (
-                <div className="friend-container">
-                    <div className="friend-card add-friend-div">
+                <div key={index} className="friend-container">
+                    <div key={index} className="friend-card add-friend-div">
                         <input
+                            key={index}
                             onClick={() => { this.addFriendToGroup(friend._id); this.startCreatingGroup() }}
                             className="add-friend hvr-grow"
                             type="button"
@@ -94,6 +95,9 @@ class CreateGroup extends React.Component {
             <div className="friend-section">
                 {this.renderRedirect()}
                 <div className="choose-friends">
+                    <p className="create-group-instructions">
+                        Select a friend from the list below to add them to a group.
+                    </p>
                     <ul className="friend-list">
                         {addFriends}
                     </ul>
@@ -120,7 +124,6 @@ class CreateGroup extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         groupId: state.friendsReducer.groupId,
         friends: state.friendsReducer.friends,

@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme-adapter-react-16": "^1.0.1",
     "google-maps-react": "^1.1.6",
     "hover.css": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "material-ui": "^0.20.0",
     "passport-local": "^1.0.0",
+    "prop-types": "^15.6.1",
     "react": "^16.3.0",
     "react-confirm-alert": "^2.0.2",
     "react-dom": "^16.3.0",
@@ -31,6 +33,9 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel-preset-stage-1": "^6.24.1"
+    "babel-preset-stage-1": "^6.24.1",
+    "enzyme": "^3.1.0",
+    "react-scripts": "1.0.14",
+    "react-test-renderer": "^16.0.0"
   }
 }

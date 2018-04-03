@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import './group-result.css';
 
-import Header from './header';
 import { groupInfo } from '../actions/users';
 
 const style = {
@@ -58,17 +55,12 @@ export class GroupResults extends React.Component {
                 maptype: map.getMapTypeId(),
             });
         });
-        let marker = new window.google.maps.Marker({
-            map: map,
-            position: { lat: 39.7684, lng: -86.1581 },
-        });
         navigator.geolocation.getCurrentPosition(success => {
 
             this.location = {
                 lat: success.coords.latitude,
                 lng: success.coords.longitude
             }
-            console.log(this.location, success)
             this.getData();
         });
 
@@ -139,7 +131,6 @@ export class GroupResults extends React.Component {
     }
 
     createMarker(place) {
-        var placeLoc = place.geometry.location;
         var marker = new window.google.maps.Marker({
             map: this.map,
             position: place.geometry.location
@@ -156,7 +147,6 @@ export class GroupResults extends React.Component {
     }
 
     callback(results, status) {
-        console.log(results);
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
             let bounds = new window.google.maps.LatLngBounds();
             for (var i = 0; i < results.length; i++) {

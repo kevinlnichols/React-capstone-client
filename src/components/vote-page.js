@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 
 import './vote-page.css';
 
 import Header from './header';
-import BackButton from './back-button';
 import { addChoiceForVote, removeChoiceForVote, saveVoting, groupInfo } from '../actions/users';
+import requiresLogin from './requires-login';
 
 
 let buttonStyle = {
@@ -39,7 +38,7 @@ export class VotePage extends React.Component {
         super(props);
     }
 
-    
+
 
     savedVotes() {
         this.props.dispatch(saveVoting(this.props.categories, this.props.match.params.id));
@@ -47,7 +46,6 @@ export class VotePage extends React.Component {
     }
 
     addChoiceForVote(choiceId, groupId) {
-        console.log(choiceId);
         this.props.dispatch(addChoiceForVote(choiceId, groupId));
     }
 
@@ -58,27 +56,34 @@ export class VotePage extends React.Component {
     render() {
         let currentGroup;
         if (this.props.groups) {
-            currentGroup = this.props.groups.map(group => {
+            currentGroup = this.props.groups.map((group, index) => {
                 if (group._id === this.props.match.params.id) {
                     return (
-                        <div className="vote-page-title">
-                            <h4>{group.groupName}</h4>
+                        <div key={index} className="vote-page-title">
+                            <h4 key={index} >{group.groupName}</h4>
                         </div>
                     )
                 }
             })
         }
 
-        console.log(this.props.groups);
         let categories;
         if (this.props.categories) {
-            categories = this.props.categories.map((category) => {
+            categories = this.props.categories.map((category, index) => {
                 return (
-                    <input value={category} onClick={() => this.removeChoiceForVote(category, this.props.match.params.id)} style={buttonStyle2} className="choice-button-2" type="button" value={category} />
+                    <input
+                        key={index}
+                        value={category}
+                        onClick={() => this.removeChoiceForVote(category, this.props.match.params.id)}
+                        style={buttonStyle2}
+                        className="choice-button-2"
+                        type="button"
+                        value={category}
+                    />
                 )
             })
         }
-        const allCategories = this.props.allCategories.map((category) => {
+        const allCategories = this.props.allCategories.map((category, index) => {
             const found = this.props.categories.find(myCategory => {
                 return myCategory == category;
             })
@@ -86,12 +91,11 @@ export class VotePage extends React.Component {
                 return;
             }
             return (
-                <div className="choice">
-                    <input id={category} onClick={() => this.addChoiceForVote(category, this.props.match.params.id)} style={buttonStyle} className="choice-button" type="button" value={category} />
+                <div key={index} className="choice">
+                    <input key={index} id={category} onClick={() => this.addChoiceForVote(category, this.props.match.params.id)} style={buttonStyle} className="choice-button" type="button" value={category} />
                 </div>
             )
         })
-        console.log(allCategories);
         return (
             <main role="main" className="vote-page">
                 <Header />
@@ -100,17 +104,17 @@ export class VotePage extends React.Component {
                 </section>
                 <section className="vote-section">
                     <Paper style={style} zDepth={2} >
+                        <p className="create-group-instructions">
+                            Select a choice from the list below. Your choices will be tallied with 
+                            others from the group to determine the winning category.
+                        </p>
                         {allCategories}
                     </Paper>
-                    {/* <div className="choices-section">
-                        {allCategories}
-                    </div> */}
                 </section>
                 <section>
                     <div id="user-choices" className="user-choices">
                         <Paper style={style} zDepth={2} >
                             {categories}
-                            {/* <input onClick={() => this.savedVotes()} type="button" value="Vote" /> */}
                             <RaisedButton
                                 onClick={() => this.savedVotes()}
                                 style={style2}
@@ -132,8 +136,7 @@ const mapStateToProps = state => {
         categories: state.friendsReducer.categories,
         allCategories: state.friendsReducer.allCategories
     };
-    console.log(state);
 };
 
-export default connect(mapStateToProps)(VotePage);
+export default requiresLogin()(connect(mapStateToProps)(VotePage));
 

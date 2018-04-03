@@ -18,7 +18,7 @@ export class Dashboard extends React.Component {
         this.props.dispatch(viewFriend());
         this.props.dispatch(viewGroup());
         this.props.dispatch(groupInfo());
-        
+
     }
 
 
@@ -34,7 +34,7 @@ export class Dashboard extends React.Component {
     }
 
     render() {
-        
+
 
         return (
             <main role="main">
@@ -44,6 +44,18 @@ export class Dashboard extends React.Component {
                         <header className="dashboard-header">
                             <h3>Hello {this.props.fullName}</h3>
                         </header>
+                        <div className="dashboard-instructions">
+                            <p>Instructions: Find friends by selecting the
+                                <span>
+                                    <button className="decorative-button">Add Friends</button>
+                                </span> button.Then select the 
+                                <span>
+                                    <button className="decorative-button">Create Group</button>
+                                </span> button to create a group with specific friends.
+                                Once a group is created it will appear on this Dashboard,
+                                where you can select the group and initiate the voting process.
+                            </p>
+                        </div>
                     </div>
                     <div className="column middle">
                         <div className="top-row">
@@ -55,7 +67,7 @@ export class Dashboard extends React.Component {
                         <div>
                             {this.props.groupData ?
                                 this.props.groupData.map((group, index) =>
-                                    <Link to={'/group-page/' + group._id}>
+                                    <Link key={index} to={'/group-page/' + group._id}>
                                         <p className={'group-box ' + this.voted(group)} key={index}>{group.groupName}</p>
                                     </Link>) : ''
                             }

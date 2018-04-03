@@ -44,12 +44,6 @@ export class ViewFriends extends React.Component {
     }
 
     render() {
-        let friend;
-        if (this.props.friends) {
-            friend = this.props.friends.map(friend => {
-                return friend._id;
-            })
-        }
 
         return (
             <ul>

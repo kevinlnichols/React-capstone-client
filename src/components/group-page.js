@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Card, CardHeader, CardTitle, CardText } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import Toggle from 'material-ui/Toggle';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -13,9 +12,9 @@ import './group-page.css';
 
 import Header from './header';
 import GroupResults from './group-results';
-//import MapContainer from './map-component';
-import { groupVoteInfo, groupInfo, deletingGroup } from '../actions/users';
-//#region 
+import requiresLogin from './requires-login';
+import { groupInfo, deletingGroup } from '../actions/users';
+
 const style = {
     width: '90%',
     margin: 20,
@@ -40,11 +39,7 @@ export class GroupPage extends React.Component {
         }
     }
 
-
-
-    //#region 
     deleteGroup() {
-        console.log(this.props.match.params.id);
         this.props.dispatch(deletingGroup(this.props.match.params.id));
         this.setState({ redirect: true })
     }
@@ -96,11 +91,11 @@ export class GroupPage extends React.Component {
 
         let currentGroup;
         if (this.props.groupData) {
-            currentGroup = this.props.groupData.map(group => {
+            currentGroup = this.props.groupData.map((group, key) => {
                 if (group._id === this.props.match.params.id) {
                     return (
-                        <div className="group-page-title">
-                            <h4>{group.groupName}</h4>
+                        <div key={key} className="group-page-title">
+                            <h4 key={key} >{group.groupName}</h4>
                         </div>
                     )
                 }
@@ -114,33 +109,30 @@ export class GroupPage extends React.Component {
                 }
             })
         }
-        console.log(group);
         let voteInfo;
         if (group) {
             voteInfo = group.votes;
         }
-        console.log(voteInfo);
         let members;
         if (group && group.members && voteInfo) {
-            members = group.members.map(member => {
-                let categories = (<p>Has not voted yet</p>);
-                voteInfo.forEach(vote => {
-                    console.log(vote.memberId);
+            members = group.members.map((member, i) => {
+                let categories = (<p key={i}>Has not voted yet</p>);
+                voteInfo.forEach((vote, i) => {
                     if (member._id === vote.memberId) {
-                        categories = (<p>{vote.categories.join(', ')}</p>)
+                        categories = (<p key={i}>{vote.categories.join(', ')}</p>)
                     }
                 });
-                console.log(categories);
                 return (
-                    <div className="member-card-container">
-                        <Card className="member-card" expanded={this.state.expanded} onExpandChange={this.handleExpandChange} >
+                    <div key={i} className="member-card-container">
+                        <Card key={i} className="member-card" expanded={this.state.expanded} onExpandChange={this.handleExpandChange} >
                             <CardHeader
+                                key={i}
                                 title={member.firstName + ' ' + member.lastName}
                                 actAsExpander={true}
                                 showExpandableButton={true}
                             />
-                            <CardTitle title="Vote Results" expandable={true} />
-                            <CardText expandable={true}>
+                            <CardTitle key={i} title="Vote Results" expandable={true} />
+                            <CardText key={i} expandable={true}>
                                 {categories}
                             </CardText>
                         </Card>
@@ -170,6 +162,9 @@ export class GroupPage extends React.Component {
                 </section>
                 <section className="member-section" >
                     <Paper style={style} zDepth={2} >
+                        <p>To view individual results, select the dropdown arrow next 
+                            to each name.
+                        </p>
                         {members}
                     </Paper>
                 </section>
@@ -193,4 +188,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(GroupPage);
+export default requiresLogin()(connect(mapStateToProps)(GroupPage));

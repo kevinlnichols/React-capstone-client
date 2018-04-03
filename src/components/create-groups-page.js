@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
 
 import Header from './header';
 import CreateGroup from './create-group';
 import {viewFriend} from '../actions/users.js';
+import requiresLogin from './requires-login';
 
 export class CreateGroupsPage extends React.Component {
 
@@ -35,4 +35,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(CreateGroupsPage);
+export default requiresLogin()(connect(mapStateToProps)(CreateGroupsPage));

@@ -82,6 +82,10 @@
     float: right;
 }
 
+.create-group-instructions {
+    text-align: center;
+}
+
 /* Grow */
 .hvr-grow {
     display: inline-block;

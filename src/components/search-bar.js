@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import User from './user';
-import { addUser } from '../actions';
 import { fetchProtectedData } from '../actions/protected-data';
-import requiresLogin from './requires-login';
 import { getUser } from '../actions/users';
 
 import './search-bar.css';
@@ -31,7 +29,6 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        console.log(this.props.users);
         let filteredUsers; 
         if (this.props.users) {
             filteredUsers = this.props.users.filter(
@@ -40,13 +37,14 @@ class SearchBar extends React.Component {
 
                 }
             );
-            filteredUsers = filteredUsers.map((user) => {
-                return <User className="user-view-container" user={user} key={user.id} />
+            filteredUsers = filteredUsers.map((user, index) => {
+                return <User key={index} className="user-view-container" user={user} />
             })
         }
         return (
             <div>
                 <input
+                    placeholder="Search for friends..."
                     style={inputStyle}
                     type="text"
                     className="find-friend"
@@ -61,8 +59,6 @@ class SearchBar extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
-    const { currentUser } = state.auth;
     return {
         fullName: state.friendsReducer.users,
         protectedData: state.protectedData.data,

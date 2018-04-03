@@ -14,7 +14,7 @@ var sectionStyle = {
     backgroundImage: `url(${TitleImage})`,
     backgroundSize: 'cover',
     overflow: 'hidden'
-  };
+};
 
 var registerStyle = {
     color: 'black',
@@ -24,7 +24,7 @@ var registerStyle = {
 
 export function LandingPage(props) {
     if (props.loggedIn) {
-        
+
         return <Redirect to='/dashboard' />;
     }
 
@@ -36,7 +36,7 @@ export function LandingPage(props) {
                     <h1 className="landing-h1">Find a Restaurant</h1>
                 </div>
                 <div className="red-arrow">
-                    <a href="#landing-section"><img className="hvr-grow" src={RedArrow} /></a>
+                    <a href="#landing-section"><img className="hvr-grow" src={RedArrow} alt="Navigation down arrow" /></a>
                 </div>
             </section>
             <section id="landing-section" className="landing-section second">
@@ -45,32 +45,24 @@ export function LandingPage(props) {
                     <p className="landing-paragraph">Create groups with friends and coworkers.<br /> Everyone in the group votes on the category of food they want.</p>
                 </div>
                 <div className="section1">
-                    <img className="food" src="https://farm5.staticflickr.com/4667/39698565214_a4d86fae83_o.jpg" alt="Picture of dessert" />
+                    <img className="food" src="https://farm5.staticflickr.com/4667/39698565214_a4d86fae83_o.jpg" alt="Dessert" />
                 </div>
             </section>
-            <section className="landing-section first">
+            <section className="landing-section first pre-login">
                 <div className="section1">
                     <img className="food" src="https://farm5.staticflickr.com/4632/38598197860_c37e845d5c_o.jpg" alt="Burger" />
                 </div>
                 <div className="section1 home-text2">
                     <h2>Choose from places nearby</h2>
-                    <p className="landing-paragraph">Based on the category chosen, everyone in the group votes on restuarants in that category. <br /> Afterward, everyone in the groups assigns a rating to the restuarant.</p>
-                </div>
-            </section>
-            <section className="landing-section second pre-login">
-                <div className="section1 home-text3">
-                    <h2>Get directions</h2>
-                    <p className="landing-paragraph">This application uses Googles Directions API</p>
-                </div>
-                <div className="section1">
-                    <img className="food" src="https://farm5.staticflickr.com/4755/38598198140_065039fdf2_o.jpg" alt="Tacos" />
+                    <p className="landing-paragraph">Based on the category chosen, nearby <br />
+                     restuarants will be shown on a map powered by Googles Places API.</p>
                 </div>
             </section>
             <section className="landing-section">
                 <div className="login-section">
                     <h2>Get Started</h2>
                     <LoginForm />
-                    <Link to="/register" style={registerStyle}><p className="link">Register</p></Link>
+                    <Link to="/register" ><p style={registerStyle} className="link">Register</p></Link>
                 </div>
             </section>
         </main>

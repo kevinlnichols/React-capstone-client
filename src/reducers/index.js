@@ -1,4 +1,4 @@
-import { Users, friends } from '../mock-data/users';
+import { Users } from '../mock-data/users';
 import * as userActions from '../actions/users';
 
 const initialState = {

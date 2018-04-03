@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './back-button.css';
 
 export class BackButton extends React.Component {
     static contextTypes = {
-        router: () => true
+        router: PropTypes.object
     }
 
     render() {
