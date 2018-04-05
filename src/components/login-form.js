@@ -33,6 +33,7 @@ export class LoginForm extends React.Component {
                 {error}
                 <label htmlFor="username">Username</label>
                 <Field
+                    placeholder="Demo Username: jnichols"
                     style={inputStyle}
                     className="input-field"
                     component={Input}
@@ -43,6 +44,7 @@ export class LoginForm extends React.Component {
                 />
                 <label htmlFor="password">Password</label>
                 <Field
+                    placeholder="Demo Password: 1234567890"
                     className="input-field"
                     component={Input}
                     type="password"
