@@ -6,6 +6,10 @@ import './registration-page.css';
 
 import RegistrationForm from './registration-form';
 
+let loginStyle = {
+    color: 'black'
+}
+
 export function RegistrationPage(props) {
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
@@ -14,7 +18,7 @@ export function RegistrationPage(props) {
         <div className="register-home">
             <h2>Register</h2>
             <RegistrationForm />
-            <Link to="/">Login</Link>
+            <Link style={loginStyle} to="/">Login</Link>
         </div>
     );
 }
