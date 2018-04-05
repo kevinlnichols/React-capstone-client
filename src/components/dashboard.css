@@ -114,7 +114,7 @@
     }
 
     .left {
-        height: 200px;
+        height: 400px;
     }
 
     .group-box {
@@ -130,35 +130,13 @@
     .middle {
         width: 100%;
     }   
-}
 
-@media screen and (max-width: 500px) {
-    .column {
-        float: none;
-        height: 500px;
-        padding-top: 30px;
+    .dashboard-instructions {
+        margin-bottom: 20px;
+        margin-right: 15px;
         text-align: center;
     }
-
-    .left {
-        height: 200px;
-    }
-
-    .group-box {
-        height: 60px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .left, .right {
-        width: 100%;
-    }
-
-    .middle {
-        width: 100%;
-    }   
 }
-
 
 @media screen and (min-width: 1500px) {
     .row {

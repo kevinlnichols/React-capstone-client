@@ -46,8 +46,8 @@ export class Nav extends React.Component {
                 >
                     <BackButton />
                     <ul className="nav-ul">
-                        <li className="nav-li-icon"><a href="/dashboard">Dashboard</a></li>
-                        <li className="nav-li-icon"><button href="/" onClick={() => this.logOut()}>Log Out</button></li>
+                        <li className="nav-li-icon dashboard-icon"><a href="/dashboard">Dashboard</a></li>
+                        <li className="nav-li-icon logout"><button href="/" onClick={() => this.logOut()}>Log Out</button></li>
                     </ul>
                 </IconMenu>
         }

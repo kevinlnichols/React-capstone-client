@@ -86,6 +86,12 @@
     text-align: center;
 }
 
+@media screen and (max-width: 500px) {
+    .choose-friends {
+        margin-top: 40px;
+    }
+}
+
 /* Grow */
 .hvr-grow {
     display: inline-block;

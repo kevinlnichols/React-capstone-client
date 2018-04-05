@@ -41,7 +41,7 @@
     text-transform: capitalize;
 }
 
-@media screen and (max-width: 500) {
+@media screen and (max-width: 500px) {
     .member-card-container {
         width: 90%;
         display: block;
@@ -50,4 +50,8 @@
         width: 90%;
         display: block
     }
+    .delete-section {
+        width: 50%;
+    }
+    
 }

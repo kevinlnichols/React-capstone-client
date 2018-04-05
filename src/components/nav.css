@@ -90,7 +90,7 @@ a {
 
     .icon-menu {
         padding: -20px;
-        margin-left: 85%;
+        margin-left: 83%;
     }
 
     .nav-li-icon > button, .nav-li-icon > a {
@@ -104,10 +104,20 @@ a {
     .nav-li-icon > button {
         background-color: white;
         border: none;
-        margin: auto;
     }
 
     .nav-li-icon > button:hover {
         text-decoration: underline;
     }
+
+    .logout {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    .dashboard-icon {
+        text-align: left;
+        margin-bottom: 4px;
+        margin-left: 5px;
+    }
 }
+
