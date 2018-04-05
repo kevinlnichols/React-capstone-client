@@ -7,32 +7,30 @@ with the highest vote total.
 
 ## Landing Page
 
-![home](https://user-images.githubusercontent.com/23110664/34546391-88ac3a72-f0c1-11e7-834b-5ec003d89991.JPG)
+![restaurant](https://user-images.githubusercontent.com/23110664/38378959-42095dee-38cd-11e8-80ee-df265f7574bf.JPG)
 Select the "Sign Up" button to create an admin. After the admin is created, login using the "Admin Login" button. 
 
 ## Dashboard
-
-![adminhome](https://user-images.githubusercontent.com/23110664/34546475-16f46c46-f0c2-11e7-8c52-f22b88879903.JPG)
+![dashboard](https://user-images.githubusercontent.com/23110664/38378799-d4410cee-38cc-11e8-8b36-09310f6dadc9.JPG)
 At the admin home page you can create users, and then create tests for the users to take. 
 
 ## Find Friends
-
-![userhome](https://user-images.githubusercontent.com/23110664/34546647-34d3a442-f0c3-11e7-8e36-4dd21b297589.JPG)
+![find-friends](https://user-images.githubusercontent.com/23110664/38378801-d5b6c1b8-38cc-11e8-9a9a-356c482c093c.JPG)
 At the user home page you will see a list of tests created by an admin. Click on a test name to take the test. 
 
 ## Create Group
 
-![userhome](https://user-images.githubusercontent.com/23110664/34546647-34d3a442-f0c3-11e7-8e36-4dd21b297589.JPG)
+![create-group](https://user-images.githubusercontent.com/23110664/38378796-d1043718-38cc-11e8-8558-f791a20eae0b.JPG)
 At the user home page you will see a list of tests created by an admin. Click on a test name to take the test. 
 
 ## Vote Page
 
-![userhome](https://user-images.githubusercontent.com/23110664/34546647-34d3a442-f0c3-11e7-8e36-4dd21b297589.JPG)
+![vote](https://user-images.githubusercontent.com/23110664/38378809-da84e27e-38cc-11e8-9c34-1f034bbf87e6.JPG)
 At the user home page you will see a list of tests created by an admin. Click on a test name to take the test. 
 
 ## Find Nearby Restaurants
 
-![userhome](https://user-images.githubusercontent.com/23110664/34546647-34d3a442-f0c3-11e7-8e36-4dd21b297589.JPG)
+![results](https://user-images.githubusercontent.com/23110664/38378803-d7814d1a-38cc-11e8-9a86-65781653f21f.JPG)
 At the user home page you will see a list of tests created by an admin. Click on a test name to take the test. 
 
 ## Functionality
