@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import IconMenu from 'material-ui/IconMenu';
@@ -31,7 +32,7 @@ export class Nav extends React.Component {
             logOutButton =
                 <ul className="nav-ul">
                     <li className="nav-li" ><BackButton /></li>
-                    <li className="nav-li"><a href="/dashboard">Dashboard</a></li>
+                    <li className="nav-li"><Link to="/dashboard">Dashboard</Link></li>
                     <li className="nav-li"><button href="/" onClick={() => this.logOut()}>Log Out</button></li>
                 </ul>
         }
@@ -46,7 +47,7 @@ export class Nav extends React.Component {
                 >
                     <BackButton />
                     <ul className="nav-ul">
-                        <li className="nav-li-icon dashboard-icon"><a href="/dashboard">Dashboard</a></li>
+                        <li className="nav-li-icon dashboard-icon"><Link to="/dashboard">Dashboard</Link></li>
                         <li className="nav-li-icon logout"><button href="/" onClick={() => this.logOut()}>Log Out</button></li>
                     </ul>
                 </IconMenu>
