@@ -25,6 +25,11 @@
 
 .left {
     box-shadow: 1px 0 1px;
+    margin-top: 40px;
+}
+
+.right {
+    margin-top: 40px;
 }
 
 .left, .right {
@@ -35,6 +40,7 @@
 .middle {
     width: 50%;
     background:snow;
+    margin-top: 40px;
 }   
 
 .group-box {

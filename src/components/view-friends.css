@@ -2,6 +2,10 @@
     list-style: none;
 }
 
+.friend-li > button {
+    padding: 8px;
+}
+
 .friend-box {
     width:85%;
     height: 50px;
